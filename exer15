@@ -1,0 +1,129 @@
+# Função para inserir lote (somente pares)
+def inserir_lote(lotes):
+    codigo = int(input("Digite o código do lote: "))
+
+    if codigo % 2 != 0:
+        print("Erro: apenas códigos pares são permitidos.")
+        return
+
+    lotes.append(codigo)
+    print("Lote inserido com sucesso.")
+
+
+# Função para listar lotes
+def listar_lotes(lotes):
+    if len(lotes) == 0:
+        print("Nenhum lote cadastrado.")
+        return
+
+    print("Lotes cadastrados:")
+
+    for i in range(len(lotes)):
+        print(f"Índice {i}: {lotes[i]}")
+
+
+# Função para retirar lote
+def retirar_lote(lotes):
+    codigo = int(input("Digite o código do lote para remover: "))
+
+    for i in range(len(lotes)):
+        if lotes[i] == codigo:
+            lotes.pop(i)
+            print("Lote removido com sucesso.")
+            return
+
+    print("Código não encontrado.")
+
+
+# Função para limpar lista
+def limpar_lotes(lotes):
+    lotes.clear()
+    print("Todos os lotes foram removidos.")
+
+
+# Função para contar maiores que X
+def contar_maiores(lotes):
+    x = int(input("Digite o valor X: "))
+    contador = 0
+
+    for valor in lotes:
+        if valor > x:
+            contador += 1
+
+    print("Quantidade de lotes maiores que", x, ":", contador)
+
+
+# Função para verificar código
+def verificar_codigo(lotes):
+    codigo = int(input("Digite o código para verificar: "))
+
+    for valor in lotes:
+        if valor == codigo:
+            print("Código presente no array.")
+            return
+
+    print("Código não encontrado.")
+
+
+# Função para maior e menor código
+def maior_menor(lotes):
+    if len(lotes) == 0:
+        print("Lista vazia.")
+        return
+
+    maior = lotes[0]
+    menor = lotes[0]
+
+    for valor in lotes:
+        if valor > maior:
+            maior = valor
+        if valor < menor:
+            menor = valor
+
+    print("Maior código:", maior)
+    print("Menor código:", menor)
+
+
+# Programa principal
+lotes = []
+
+while True:
+    print("\n--- MENU ---")
+    print("1 - Inserir lote")
+    print("2 - Listar lotes")
+    print("3 - Retirar lote")
+    print("4 - Limpar lotes")
+    print("5 - Contar lotes maiores que X")
+    print("6 - Verificar código")
+    print("7 - Maior e menor código")
+    print("8 - Sair")
+
+    opcao = int(input("Escolha uma opção: "))
+
+    if opcao == 1:
+        inserir_lote(lotes)
+
+    elif opcao == 2:
+        listar_lotes(lotes)
+
+    elif opcao == 3:
+        retirar_lote(lotes)
+
+    elif opcao == 4:
+        limpar_lotes(lotes)
+
+    elif opcao == 5:
+        contar_maiores(lotes)
+
+    elif opcao == 6:
+        verificar_codigo(lotes)
+
+    elif opcao == 7:
+        maior_menor(lotes)
+
+    elif opcao == 8:
+        print("Encerrando programa...")
+        break
+
+    else:
+        print("Opção inválida.")
