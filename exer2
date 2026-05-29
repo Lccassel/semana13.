@@ -1,0 +1,43 @@
+# Função para ler as produções
+def ler_producoes():
+    producoes = []
+
+    for i in range(8):
+        valor = float(input(f"Digite a produção {i+1} (kg): "))
+        producoes.append(valor)
+
+    return producoes
+
+
+# Função para calcular a média
+def calcular_media(array):
+    soma = 0
+
+    for valor in array:
+        soma += valor
+
+    return soma / len(array)
+
+
+# Função para mostrar valores acima da média
+def mostrar_acima_media(array, media):
+    print("\nProduções acima da média:")
+
+    encontrou = False
+
+    for valor in array:
+        if valor > media:
+            print(valor)
+            encontrou = True
+
+    if not encontrou:
+        print("Nenhuma produção acima da média.")
+
+
+# Programa principal
+producoes = ler_producoes()
+media = calcular_media(producoes)
+
+print("\nMédia das produções:", media)
+
+mostrar_acima_media(producoes, media)
